@@ -35,7 +35,7 @@
             <h2>Add Task</h2>
             <form action="." method="post">
                 <?php foreach ($task_list as $task): ?>
-                    <input type="hidden" name="tasklist[]" value="<?php htmlspecialchars($task); ?>">
+                    <input type="hidden" name="tasklist[]" value="<?php echo htmlspecialchars($task); ?>">
                 <?php endforeach; ?>
                 <input type="hidden" name="action" value="add">
                 <label>Taks:</label>
