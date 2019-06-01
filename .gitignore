@@ -1,0 +1,22 @@
+*~
+*.bak
+
+# hident files created by windows
+Thumbs.db
+desktop.ini
+
+.DS_Store
+.buildpath
+.project
+.settings
+*.tmproj
+build
+nbproject
+.idea
+vendor
+composer.phar
+components/*/
+
+#the composer package lock file and install directory
+composer.lock
+
