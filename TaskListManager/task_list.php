@@ -9,12 +9,12 @@
             <h1>Task List Manager</h1>
         </header>
         <main>
-            <!-- Part 1: Te errors -->
-            <?php if (count($error) > 0) : ?>
+            <!-- Part 1: The errors -->
+            <?php if (count($errors) > 0) : ?>
             <h2>Errors</h2>
             <ul>
-                <?php foreach ($error as $error) : ?>
-                <li><?php echo htmlspecialchars($error)?></li>
+                <?php foreach ($errors as $error): ?>
+                    <li><?php echo htmlspecialchars($error)?></li>
                 <?php endforeach; ?>
             </ul>
             <?php endif; ?>

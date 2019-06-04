@@ -5,7 +5,7 @@
     }
 
     $action = filter_input(INPUT_POST, 'action');
-    $error = array();
+    $errors = array();
 
     switch ($action) {
         case 'add':
