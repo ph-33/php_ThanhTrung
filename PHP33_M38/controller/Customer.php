@@ -21,11 +21,25 @@ class Customer
         }
         /* */
 
-        if ($query !== null && $query !== '') {
+        /**
+         if ($query !== null && $query !== '') {
             $customers = [];
             foreach ($data as $item) {
                 preg_match_all('/'.$query.'/i', $item->getName(), $result);
                 if (!empty($result[0])) {
+                    $customers[] = $item;
+                }
+            }
+        }
+        else {
+            $customers = $data;
+        }
+         /* */
+
+        if ($query !== null && $query !== '') {
+            $customers = [];
+            foreach ($data as $item) {
+                if (stripos($item->getName(), $query) !== false) {
                     $customers[] = $item;
                 }
             }
