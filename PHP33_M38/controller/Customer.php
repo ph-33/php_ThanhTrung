@@ -39,6 +39,12 @@ class Customer
         if ($query !== null && $query !== '') {
             $customers = [];
             foreach ($data as $item) {
+                /*
+                 * stripos:
+                 * Trả về vị trí xuất hiện đầu tiên của một chuỗi con bên trong một chuỗi khác
+                 * không phân biệt chữ hoa chữ thường trong chuỗi
+                 * hoặc FALSE nếu không tìm thấy chuỗi.
+                 * */
                 if (stripos($item->getName(), $query) !== false) {
                     $customers[] = $item;
                 }
