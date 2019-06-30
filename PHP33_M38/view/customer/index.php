@@ -1,7 +1,13 @@
 <?php include 'view/layouts/header.php'; ?>
     <main>
         <h1>Customers List</h1>
-        <?php include 'view/customer/search.php'; ?>
+
+        <?php //include 'view/customer/search.php'; ?>
+        <form action="." id="form_search">
+            <input type="text" name="s" value="<?php echo htmlentities(filter_input(INPUT_GET, 's')); ?>">
+            <button>Search</button>
+        </form>
+
         <aside>
             <!-- display a list of menu -->
             <h2>Menu</h2>
