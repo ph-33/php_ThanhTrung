@@ -1,42 +1,68 @@
 <?php
 
-class Actions
+class Controller
 {
-    public  function  userList() {
-        $str = filter_input(INPUT_GET, 's');
-        $email = filter_input(INPUT_POST, 'email');
+    public function userList() {
+        $users = UserDB::getUser();
+        include('view/user_list.php');
+    }
 
-        if ($str!==NULL && $str!=='') {
-            $result = UserDB::searchUser($str);
+    public function search() {
+        $str = filter_input(INPUT_GET, 's');
+
+        if ($str !== NULL && $str !== '') {
+            $users = UserDB::searchUser($str);
         }
-        elseif ($email!==NULL && $email!=='') {
-            UserDB::deleteUser($email);
-            header('Location: index.php');
-        }
-        else
-        {
-            $result = UserDB::getUser();
+        else {
+            $users = UserDB::getUser();
         }
 
         include('view/user_list.php');
     }
 
-    public function edit() {
+    public function editUser() {
+        $email = filter_input(INPUT_POST, 'email');
+
+        $user = UserDB::getUserDetail($email);
+
+        if ($user!==0) {
+            include ('view/edit_user.php');
+        }
+        else {
+            $this->userList();
+            $this->errorMessage();
+        }
+    }
+
+    public function updateUser() {
         $email = filter_input(INPUT_POST, 'email');
         $fName = filter_input(INPUT_POST, 'fName');
         $lName = filter_input(INPUT_POST, 'lName');
 
-        if(isset($_POST["save"])) {
-
-            UserDB::updateUser($email, $fName, $lName);
-            header('Location: ../index.php');
-        }
-
-        if(isset($_POST["cancel"])) {
-            header('Location: ../index.php');
-        }
+        UserDB::updateUser($email, $fName, $lName);
+        header('Location: index.php');
     }
 
+    public function deleteUser() {
+        $email = filter_input(INPUT_POST, 'email');
+
+        $user = UserDB::getUserDetail($email);
+
+        if ($user!==0) {
+            UserDB::deleteUser($email);
+            header('Location: index.php');
+        }
+        else {
+            $this->userList();
+            $this->errorMessage();
+        }
+
+
+    }
+
+    public function errorMessage() {
+        echo '<b style="color: red">Does not exist user. </b>';
+    }
 }
 
 ?>

@@ -1,17 +1,3 @@
-<?php
-require ('../controller/user_controller.php');
-require ('../model/database.php');
-require ('../model/user_db.php');
-
-$userControl = new Actions();
-
-$email = filter_input(INPUT_POST, 'email');
-$user = UserDB::getUserDetail($email);
-
-$userControl->edit();
-
-?>
-
 <!DOCTYPE html>
 
 <html>
@@ -24,17 +10,18 @@ $userControl->edit();
 <main>
     <form action="" method="post">
         <label>Email:</label>
-        <input type="text" name="email" value="<?php echo $user->getEmail(); ?>" readonly><br>
+        <input type="text" name="email" value="<?php echo htmlentities($user->getEmail()); ?>" readonly><br>
 
         <label>First Name:</label>
-        <input type="text" name="fName" value="<?php echo $user->getFName(); ?>"><br>
+        <input type="text" name="fName" value="<?php echo htmlentities($user->getFName()); ?>"><br>
 
         <label>Last Name:</label>
-        <input type="text" name="lName" value="<?php echo $user->getLName(); ?>"><br>
+        <input type="text" name="lName" value="<?php echo htmlentities($user->getLName()); ?>"><br>
 
-        <input type="submit" name="save" value="Save">
-        <input type="submit" name="cancel" value="Cancel">
+        <button type="submit" name="action" value="update">Save</button>
+        <button type="submit" name="action" value="cancel">Cancel</button>
     </form>
+
 </main>
 </body>
 </html>

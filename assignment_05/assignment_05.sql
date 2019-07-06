@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `assignment_05` /*!40100 DEFAULT CHARACTER SET ut
 USE `assignment_05`;
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: localhost    Database: assignment_05
+-- Host: localhost    Database: assignment_05 (error)
 -- ------------------------------------------------------
 -- Server version	8.0.16
 
