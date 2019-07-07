@@ -40,6 +40,7 @@ class UserDB
         else {
             $user = 0;
         }
+        $stmt->closeCursor();
         return $user;
     }
 
